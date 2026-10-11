@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Схема для вышивания из пиксель-арта</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <header class="app-header no-print">
+    <h1>🧵 Схема для вышивания (Pixel Art Grid)</h1>
+    <div class="controls-grid">
+      <input type="file" id="fileInput" accept="image/*">
+      <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
+        📁 Выбрать картинку
+      </button>
+      <button class="btn btn-outline" id="loadSampleBtn">
+        ✨ Загрузить образец
+      </button>
+
+      <div class="control-group">
+        <label for="cellMm">Ячейка (мм):</label>
+        <input type="number" id="cellMm" value="2.4" min="0.5" max="30" step="0.1">
+      </div>
+
+      <div class="control-group">
+        <label for="widthMm">Ширина (мм):</label>
+        <input type="number" id="widthMm" value="200" min="10" max="2000" step="1">
+      </div>
+
+      <div class="control-group">
+        <label for="cellSize">Ячейка (px):</label>
+        <input type="number" id="cellSize" value="26" min="12" max="64" step="2">
+      </div>
+
+      <div class="control-group">
+        <label>
+          <input type="checkbox" id="showSymbols" checked> Символы
+        </label>
+      </div>
+
+      <div class="control-group">
+        <label>
+          <input type="checkbox" id="showNumbers" checked> Нумерация
+        </label>
+      </div>
+
+      <button class="btn btn-outline" id="downloadSvgBtn">
+        📐 Скачать SVG
+      </button>
+
+      <button class="btn btn-outline" id="downloadPngBtn">
+        💾 Скачать PNG (300 DPI)
+      </button>
+
+      <button class="btn btn-primary" id="printBtn">
+        🖨️ Печать
+      </button>
+    </div>
+  </header>
+
+  <div class="dropzone no-print" id="dropzone">
+    Перетащите сюда файл пиксель-арта (PNG, GIF, JPEG, WebP) или нажмите «Выбрать картинку»
+  </div>
+
+  <div class="info-card" id="infoCard">
+    <div class="info-metrics">
+      <div class="metric-badge metric-resolution" id="infoResolutionBadge">
+        <span class="metric-label">Разрешение исходника:</span>
+        <strong id="infoResolution">—</strong>
+      </div>
+      <div class="metric-badge metric-physical" id="infoPhysicalBadge">
+        <span>Размер для печати:</span>
+        <strong id="infoPhysical">—</strong>
+      </div>
+      <div class="metric-badge metric-color-count" id="infoColorBadge">
+        <span>Количество цветов:</span>
+        <strong id="infoColorCount">—</strong>
+      </div>
+    </div>
+    <div class="metric-badge metric-grid-info no-print" style="color: var(--muted);">
+      <span>Сетка: минорная 1px, мажорная 10px</span>
+    </div>
+  </div>
+
+  <main class="workspace-area">
+    <div class="canvas-scroll-container">
+      <div class="print-scheme-wrap" id="printWrap">
+        <svg id="schemeSvg"></svg>
+      </div>
+    </div>
+
+    <section class="palette-section">
+      <h2>Палитра</h2>
+      <div class="palette-grid" id="paletteGrid"></div>
+    </section>
+  </main>
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
